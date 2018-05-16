@@ -27,7 +27,7 @@ import java.util.Locale;
  */
 public class AppUtils {
 
-    public static String getMacAddress(Integer port) {
+    public static String getMacAddress() {
         String mac = "";
         try {
             InetAddress address = InetAddress.getLocalHost();
@@ -39,7 +39,7 @@ public class AppUtils {
             }
         } catch (Exception e) {
         }
-        return mac + ":" + port;
+        return mac;
     }
 
     public static String createIpTableIfNotExist() {
@@ -63,12 +63,11 @@ public class AppUtils {
         return ipStr;
     }
 
-    public static String sendMe(String ip, Integer fresh, Integer port) {
+    public static String sendMe(String ip, Integer fresh) {
         try {
             AddScreenRequest addScreenRequest = new AddScreenRequest();
-            addScreenRequest.setMacAddress(getMacAddress(port));
+            addScreenRequest.setMacAddress(getMacAddress());
             addScreenRequest.setFresh(fresh);
-            addScreenRequest.setPort(port);
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody requestBody = RequestBody.create(
                     MediaType.parse("application/json; charset=utf-8"),

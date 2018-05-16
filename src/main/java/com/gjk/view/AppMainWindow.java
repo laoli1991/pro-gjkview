@@ -21,11 +21,10 @@ public class AppMainWindow extends JFrame {
     private static JLabel ipResponseJLabel = new JLabel("");
 
     public static void main(String[] args) throws Exception {
-        final DatagramSocket socket = new DatagramSocket();
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    init(socket.getLocalPort());
+                    init();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -34,7 +33,7 @@ public class AppMainWindow extends JFrame {
         new Thread() {
             @Override
             public void run() {
-                ClientService clientService = new ClientService(socket);
+                ClientService clientService = new ClientService();
                 clientService.init();
             }
         }.start();
@@ -44,14 +43,14 @@ public class AppMainWindow extends JFrame {
             public void run() {
                 String ipStr = AppUtils.getServerIp();
                 if (ipStr != null) {
-                    String response = AppUtils.sendMe(ipStr, 0, socket.getLocalPort());
+                    String response = AppUtils.sendMe(ipStr, 0);
                     ipResponseJLabel.setText(response);
                 }
             }
         }, 5, 10, TimeUnit.MINUTES);
     }
 
-    public static void init(int port) {
+    public static void init() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -68,7 +67,7 @@ public class AppMainWindow extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        JLabel macAddressAndPortLable = new JLabel("Mac地址:端口"+AppUtils.getMacAddress(port));
+        JLabel macAddressAndPortLable = new JLabel("Mac地址"+AppUtils.getMacAddress());
         macAddressAndPortLable.setBounds(10, 0, 300, 25);
         panel.add(macAddressAndPortLable);
 
@@ -100,7 +99,7 @@ public class AppMainWindow extends JFrame {
         JkViewWindow d = new JkViewWindow();
 
         if (ipStr != null) {
-            String response = AppUtils.sendMe(ipStr, 1, port);
+            String response = AppUtils.sendMe(ipStr, 1);
             ipResponseJLabel.setText(response);
         }
 
@@ -114,7 +113,7 @@ public class AppMainWindow extends JFrame {
         ipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String response = AppUtils.sendMe(ipText.getText(), 1, port);
+                String response = AppUtils.sendMe(ipText.getText(), 1);
                 ipResponseJLabel.setText(response);
             }
         });

@@ -11,21 +11,19 @@ import java.net.DatagramSocket;
  * @Description:
  */
 public class ClientService {
-    private DatagramSocket socket;
 
-    public ClientService(DatagramSocket socket) {
-        this.socket = socket;
+    public ClientService() {
     }
 
     public void init() {
         try {
+            DatagramSocket socket = new DatagramSocket(9002);
             while (true) {
                 byte[] buf = new byte[65600];
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 socket.receive(packet);
                 byte[] data = packet.getData();
                 String msg = new String(data, 0, packet.getLength(), "UTF-8");
-                System.out.println(msg);
                 MsgDto msgDto = JSONObject.parseObject(msg, MsgDto.class);
                 if (msgDto != null) {
                     ConfigStaticDatas.amount.setText(AppUtils.formtStr(msgDto.getAmount()));
