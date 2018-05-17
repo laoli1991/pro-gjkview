@@ -9,7 +9,6 @@
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>pro-gjkview</name>
-    <url>http://maven.apache.org</url>
 
     <dependencies>
         <dependency>
