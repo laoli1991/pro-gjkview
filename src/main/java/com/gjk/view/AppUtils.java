@@ -39,7 +39,7 @@ public class AppUtils {
             }
         } catch (Exception e) {
         }
-        return mac;
+        return String.format("%s:%s", mac, ClientService.port);
     }
 
     public static String createIpTableIfNotExist() {
@@ -68,6 +68,7 @@ public class AppUtils {
             AddScreenRequest addScreenRequest = new AddScreenRequest();
             addScreenRequest.setMacAddress(getMacAddress());
             addScreenRequest.setFresh(fresh);
+            addScreenRequest.setPort(ClientService.port);
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody requestBody = RequestBody.create(
                     MediaType.parse("application/json; charset=utf-8"),

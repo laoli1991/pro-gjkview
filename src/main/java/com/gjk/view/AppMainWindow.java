@@ -67,7 +67,7 @@ public class AppMainWindow extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        JLabel macAddressAndPortLable = new JLabel("Mac地址"+AppUtils.getMacAddress());
+        JLabel macAddressAndPortLable = new JLabel("Mac地址:端口"+AppUtils.getMacAddress());
         macAddressAndPortLable.setBounds(10, 0, 300, 25);
         panel.add(macAddressAndPortLable);
 

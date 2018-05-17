@@ -13,18 +13,18 @@ public class HeadPanel extends JPanel {
 
     public HeadPanel(String x, JLabel jx) {
         super(true);
-        this.setBackground(Color.white);
+        this.setBackground(Color.blue);
         this.setLayout(new BorderLayout());
         this.add(getUpPanel(x, jx), BorderLayout.CENTER);
     }
 
     private JPanel getUpPanel(String x, JLabel jx) {
         JPanel p1 = new JPanel(new GridLayout(1, 1, 10, 10));
-        p1.setBackground(Color.white);
+        p1.setBackground(Color.blue);
 
         jx.setText(x);
-        jx.setFont(new Font("宋体", 1, 55));
-        jx.setForeground(Color.red);
+        jx.setFont(new Font("宋体", 1, 80));
+        jx.setForeground(Color.white);
         jx.setHorizontalAlignment(JLabel.CENTER);
         p1.add(jx, BorderLayout.CENTER);
 

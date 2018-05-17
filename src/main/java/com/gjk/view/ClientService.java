@@ -11,13 +11,14 @@ import java.net.DatagramSocket;
  * @Description:
  */
 public class ClientService {
+    public static int port = 9002;
 
     public ClientService() {
     }
 
     public void init() {
         try {
-            DatagramSocket socket = new DatagramSocket(9002);
+            DatagramSocket socket = new DatagramSocket(port);
             while (true) {
                 byte[] buf = new byte[65600];
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);

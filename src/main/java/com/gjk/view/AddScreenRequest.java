@@ -8,6 +8,7 @@ package com.gjk.view;
 public class AddScreenRequest {
     private String macAddress;
     private Integer fresh;
+    private Integer port;
 
     public String getMacAddress() {
         return macAddress;
@@ -25,4 +26,11 @@ public class AddScreenRequest {
         this.fresh = fresh;
     }
 
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
 }
