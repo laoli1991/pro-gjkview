@@ -22,7 +22,7 @@ public class AmountPanel extends JPanel {
         JPanel panel = new JPanel(new GridLayout(1, 2, 10, 10));
         panel.setBackground(Color.blue);
         j1.setText(s1);
-        j1.setFont(new Font("宋体", 0, 100));
+        j1.setFont(new Font("宋体", 1, 100));
         j1.setForeground(Color.white);
         j1.setHorizontalAlignment(JLabel.CENTER);
 
