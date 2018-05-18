@@ -15,7 +15,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class JkViewWindow extends MouseAdapter {
+public class JkViewWindow {
     private JFrame frame;
 
     public void init(boolean vis) {
