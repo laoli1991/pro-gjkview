@@ -103,6 +103,8 @@ public class AppMainWindow extends JFrame {
             ipResponseJLabel.setText(response);
         }
 
+        d.init(true);
+
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
