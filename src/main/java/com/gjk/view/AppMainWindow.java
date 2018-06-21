@@ -43,7 +43,7 @@ public class AppMainWindow extends JFrame {
             public void run() {
                 for (int i = 1; i <= 10; i++) {
                     try {
-                        Thread.sleep(60*1000 * i);
+                        Thread.sleep(60*1000);
                         String ipStr = AppUtils.getServerIp();
                         if (ipStr != null) {
                             String response = AppUtils.sendMe(ipStr, 1);
