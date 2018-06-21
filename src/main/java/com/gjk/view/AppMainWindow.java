@@ -38,12 +38,29 @@ public class AppMainWindow extends JFrame {
             }
         }.start();
 
+        new Thread() {
+            @Override
+            public void run() {
+                for (int i = 1; i <= 10; i++) {
+                    try {
+                        Thread.sleep(1000 * i);
+                        String ipStr = AppUtils.getServerIp();
+                        if (ipStr != null) {
+                            String response = AppUtils.sendMe(ipStr, 1);
+                            ipResponseJLabel.setText(response);
+                        }
+                    } catch (InterruptedException e) {
+                    }
+                }
+            }
+        }.start();
+
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(new Runnable() {
             public void run() {
                 String ipStr = AppUtils.getServerIp();
                 if (ipStr != null) {
-                    String response = AppUtils.sendMe(ipStr, 0);
+                    String response = AppUtils.sendMe(ipStr, 1);
                     ipResponseJLabel.setText(response);
                 }
             }
@@ -67,7 +84,7 @@ public class AppMainWindow extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        JLabel macAddressAndPortLable = new JLabel("Mac地址:端口"+AppUtils.getMacAddress());
+        JLabel macAddressAndPortLable = new JLabel("Mac地址:端口" + AppUtils.getMacAddress());
         macAddressAndPortLable.setBounds(10, 0, 300, 25);
         panel.add(macAddressAndPortLable);
 
